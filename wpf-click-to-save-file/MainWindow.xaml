@@ -1,0 +1,44 @@
+﻿<Window x:Class="wpf_click_to_save_file.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:wpf_click_to_save_file"
+        mc:Ignorable="d"
+        Title="MainWindow" Width="500" Height="300" 
+        WindowStartupLocation="CenterScreen">
+    <Window.DataContext>
+        <local:MainPageBindingContext/>
+    </Window.DataContext>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="10"/>
+        </Grid.RowDefinitions>
+        <Image
+            Source="{Binding CurrentImageSource}"
+            Margin="20" />
+        <StackPanel
+            Grid.Row="1"
+            HorizontalAlignment="Center"
+            Orientation="Horizontal">
+            <ComboBox
+                ItemsSource="{Binding ComboBoxItems}"
+                SelectedIndex="{Binding SelectedImageIndex}" 
+                VerticalContentAlignment="Center"
+                DisplayMemberPath="Key"
+                SelectedValuePath="Value"
+                Width="150" Height="30" Margin="20,0" />
+        </StackPanel>
+        <Button 
+            Grid.Row="2"
+            Width="150" 
+            Height="30"
+            Margin="0,10"
+            VerticalContentAlignment="Center"
+            Content="Save" 
+            Click="Save_Clicked"/>
+    </Grid>
+</Window>
