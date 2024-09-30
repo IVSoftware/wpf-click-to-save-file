@@ -119,13 +119,4 @@ namespace wpf_click_to_save_file
             }
         }
     }
-
-    class Command : ICommand
-    {
-        public Command(Action<object> action) => _action = action;
-        public event EventHandler? CanExecuteChanged;
-        public bool CanExecute(object? parameter) => true;
-        private Action<object> _action;
-        public void Execute(object? parameter) => _action(parameter);
-    }
 }
